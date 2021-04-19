@@ -1,0 +1,125 @@
+++ id -u
++ myuid=0
+++ id -g
++ mygid=0
++ set +e
+++ getent passwd 0
++ uidentry=root:x:0:0:root:/root:/bin/ash
++ set -e
++ '[' -z root:x:0:0:root:/root:/bin/ash ']'
++ SPARK_K8S_CMD=executor
++ case "$SPARK_K8S_CMD" in
++ shift 1
++ SPARK_CLASSPATH=':/opt/spark/jars/*'
++ env
++ grep SPARK_JAVA_OPT_
++ sort -t_ -k4 -n
++ sed 's/[^=]*=\(.*\)/\1/g'
++ readarray -t SPARK_EXECUTOR_JAVA_OPTS
++ '[' -n '' ']'
++ '[' -n '' ']'
++ PYSPARK_ARGS=
++ '[' -n '' ']'
++ R_ARGS=
++ '[' -n '' ']'
++ '[' '' == 2 ']'
++ '[' '' == 3 ']'
++ case "$SPARK_K8S_CMD" in
++ CMD=(${JAVA_HOME}/bin/java "${SPARK_EXECUTOR_JAVA_OPTS[@]}" -Xms$SPARK_EXECUTOR_MEMORY -Xmx$SPARK_EXECUTOR_MEMORY -cp "$SPARK_CLASSPATH" org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url $SPARK_DRIVER_URL --executor-id $SPARK_EXECUTOR_ID --cores $SPARK_EXECUTOR_CORES --app-id $SPARK_APPLICATION_ID --hostname $SPARK_EXECUTOR_POD_IP)
++ exec /sbin/tini -s -- /usr/lib/jvm/java-1.8-openjdk/bin/java -XX:+UseCompressedOops -XX:-OmitStackTraceInFastThrow -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m -Dlog4j.configuration=log4j_k8s.properties -Dlog4j.asSparkFile=true -Xms16g -Xmx16g -cp ':/opt/spark/jars/*' org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7078 --executor-id 1 --cores 4 --app-id spark-63ac34c6f5b84a2e97cbe7cea7b9115e --hostname 10.239.226.63
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/04/19 17:47:32 INFO CoarseGrainedExecutorBackend: Started daemon with process name: 13@pax-installation-pipeline-1618854442749-exec-1
+21/04/19 17:47:32 INFO SignalUtils: Registered signal handler for TERM
+21/04/19 17:47:32 INFO SignalUtils: Registered signal handler for HUP
+21/04/19 17:47:32 INFO SignalUtils: Registered signal handler for INT
+21/04/19 17:47:32 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+21/04/19 17:47:32 INFO SecurityManager: Changing view acls to: root
+21/04/19 17:47:32 INFO SecurityManager: Changing modify acls to: root
+21/04/19 17:47:32 INFO SecurityManager: Changing view acls groups to: 
+21/04/19 17:47:32 INFO SecurityManager: Changing modify acls groups to: 
+21/04/19 17:47:32 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+21/04/19 17:47:32 INFO TransportClientFactory: Successfully created connection to pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc/10.239.174.97:7078 after 76 ms (0 ms spent in bootstraps)
+21/04/19 17:47:33 WARN SparkConf: The configuration key 'spark.kryoserializer.buffer.max.mb' has been deprecated as of Spark 1.4 and may be removed in the future. Please use the new key 'spark.kryoserializer.buffer.max' instead.
+21/04/19 17:47:33 INFO SecurityManager: Changing view acls to: root
+21/04/19 17:47:33 INFO SecurityManager: Changing modify acls to: root
+21/04/19 17:47:33 INFO SecurityManager: Changing view acls groups to: 
+21/04/19 17:47:33 INFO SecurityManager: Changing modify acls groups to: 
+21/04/19 17:47:33 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+21/04/19 17:47:33 INFO TransportClientFactory: Successfully created connection to pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc/10.239.174.97:7078 after 2 ms (0 ms spent in bootstraps)
+21/04/19 17:47:33 INFO DiskBlockManager: Created local directory at /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/blockmgr-372d7980-ecf0-4424-b851-50f05fba39c5
+21/04/19 17:47:33 INFO MemoryStore: MemoryStore started with capacity 9.0 GB
+21/04/19 17:47:33 INFO CoarseGrainedExecutorBackend: Connecting to driver: spark://CoarseGrainedScheduler@pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7078
+21/04/19 17:47:33 INFO CoarseGrainedExecutorBackend: Successfully registered with driver
+21/04/19 17:47:33 INFO Executor: Starting executor ID 1 on host 10.239.226.63
+21/04/19 17:47:33 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 38973.
+21/04/19 17:47:33 INFO NettyBlockTransferService: Server created on 10.239.226.63:38973
+21/04/19 17:47:33 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/04/19 17:47:33 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(1, 10.239.226.63, 38973, None)
+21/04/19 17:47:33 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(1, 10.239.226.63, 38973, None)
+21/04/19 17:47:33 INFO BlockManager: Initialized BlockManager: BlockManagerId(1, 10.239.226.63, 38973, None)
+21/04/19 17:47:48 INFO CoarseGrainedExecutorBackend: Got assigned task 0
+21/04/19 17:47:48 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/properties/paxata.properties with timestamp 1618854448842
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/paxata.properties to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp7672204911525836361.tmp
+21/04/19 17:47:48 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/-7809345291618854448842_cache to /opt/spark/work-dir/./paxata.properties
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/properties/default-messages.properties with timestamp 1618854448827
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/default-messages.properties to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp4161589730645527061.tmp
+21/04/19 17:47:48 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/2769430541618854448827_cache to /opt/spark/work-dir/./default-messages.properties
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/properties/log4j_yarn.properties with timestamp 1618854448839
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/log4j_yarn.properties to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp4784031278496670460.tmp
+21/04/19 17:47:48 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/11955209891618854448839_cache to /opt/spark/work-dir/./log4j_yarn.properties
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/properties/log4j.properties with timestamp 1618854448833
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/log4j.properties to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp1342506089843239202.tmp
+21/04/19 17:47:48 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/-17801685741618854448833_cache to /opt/spark/work-dir/./log4j.properties
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/properties/clustering-algorithms.properties with timestamp 1618854448820
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/clustering-algorithms.properties to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp2781375471030582580.tmp
+21/04/19 17:47:48 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/18820359551618854448820_cache to /opt/spark/work-dir/./clustering-algorithms.properties
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/properties/spark.properties with timestamp 1618854448845
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/spark.properties to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp1565033619712398103.tmp
+21/04/19 17:47:48 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/-16950387851618854448845_cache to /opt/spark/work-dir/./spark.properties
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/properties/tiers.properties with timestamp 1618854448847
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/tiers.properties to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp2056202663012618599.tmp
+21/04/19 17:47:48 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/-8631064851618854448847_cache to /opt/spark/work-dir/./tiers.properties
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/properties/log4j_k8s.properties with timestamp 1618854448836
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/log4j_k8s.properties to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp363426563511401310.tmp
+21/04/19 17:47:48 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/19363249871618854448836_cache to /opt/spark/work-dir/./log4j_k8s.properties
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/properties/http.properties with timestamp 1618854448830
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/http.properties to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp1615696889025377230.tmp
+21/04/19 17:47:48 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/18234288941618854448830_cache to /opt/spark/work-dir/./http.properties
+21/04/19 17:47:48 INFO Executor: Fetching http://10.239.190.30:8810/pipeline/lib/pipeline.jar with timestamp 1618854448819
+21/04/19 17:47:48 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/lib/pipeline.jar to /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/fetchFileTemp6718772725445700428.tmp
+21/04/19 17:47:49 INFO Utils: Copying /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/spark-51eaee2e-5d47-4974-8c35-5102b1f3b39d/-20765857341618854448819_cache to /opt/spark/work-dir/./pipeline.jar
+21/04/19 17:47:49 INFO Executor: Adding file:/opt/spark/work-dir/./pipeline.jar to class loader
+21/04/19 17:47:49 INFO TorrentBroadcast: Started reading broadcast variable 0
+21/04/19 17:47:49 INFO TransportClientFactory: Successfully created connection to pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc/10.239.174.97:7079 after 2 ms (0 ms spent in bootstraps)
+21/04/19 17:47:49 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 2.3 KB, free 9.0 GB)
+21/04/19 17:47:49 INFO TorrentBroadcast: Reading broadcast variable 0 took 120 ms
+21/04/19 17:47:49 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 3.5 KB, free 9.0 GB)
+2021-04-19 17:47:49.865 GMT+0000 INFO  [Executor task launch worker for task 0] LoggingProperties - Enabled dynamic logging configuration [log4j_k8s.properties]
+2021-04-19 17:47:49.898 GMT+0000 INFO  [Executor task launch worker for task 0] PaxBootstrap - ulimit for process is 1048576
+2021-04-19 17:47:49.938 GMT+0000 INFO  [Executor task launch worker for task 0] CacheDataServer - Created NettyProtoServer: kind=oio, port=43061
+2021-04-19 17:47:49.939 GMT+0000 INFO  [Executor task launch worker for task 0] CacheManagerOnNodeImpl - Bound socket to port 43061, executorId=1
+2021-04-19 17:47:49.963 GMT+0000 INFO  [Executor task launch worker for task 0] log - Logging initialized @18614ms
+2021-04-19 17:47:50.026 GMT+0000 INFO  [Executor task launch worker for task 0] Server - jetty-9.2.z-SNAPSHOT
+2021-04-19 17:47:50.052 GMT+0000 INFO  [Executor task launch worker for task 0] ServerConnector - Started ServerConnector@5a622132{HTTP/1.1}{0.0.0.0:49153}
+2021-04-19 17:47:50.053 GMT+0000 INFO  [Executor task launch worker for task 0] Server - Started @18703ms
+2021-04-19 17:47:50.053 GMT+0000 INFO  [Executor task launch worker for task 0] CacheFileServerImpl - CacheFileServer: started cache file server on port 49153
+2021-04-19 17:47:50.054 GMT+0000 INFO  [Executor task launch worker for task 0] Utils - Successfully started service on port 49153.
+2021-04-19 17:47:50.321 GMT+0000 INFO  [Executor task launch worker for task 0] NettySharedConnection - created RemoteClient channel on remote host, ch=[id: 0xbcc3a32c, L:/10.239.226.63:57420 - R:/10.239.174.97:42867]
+2021-04-19 17:47:50.369 GMT+0000 INFO  [Executor task launch worker for task 0] RefCountLRU - RefCountLRU constructed with capacity: 1048576000000
+2021-04-19 17:47:50.396 GMT+0000 INFO  [Executor task launch worker for task 0] CacheFileServerImpl - CacheFileServer: cache file server on port 49153 now serving /var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/ab274de6-0eba-4233-9f00-b61206fef353/cache-b35e73a8-29d6-4c6a-ad30-1be18c5525b1
+2021-04-19 17:47:50.402 GMT+0000 INFO  [Executor task launch worker for task 0] CacheManagerOnNodeImpl - created IndexCache for nodeId=executorId: "1"
+hostname: "10.239.226.63"
+port: 43061
+fileServPort: 49153
+, cacheDir=/var/data/spark-471290fc-60cb-4d1d-a8a0-566d8896cfe6/ab274de6-0eba-4233-9f00-b61206fef353/cache-b35e73a8-29d6-4c6a-ad30-1be18c5525b1
+2021-04-19 17:47:50.431 GMT+0000 INFO  [Executor task launch worker for task 0] Executor - Finished task 0.0 in stage 0.0 (TID 0). 709 bytes result sent to driver
+2021-04-19 17:47:51.816 GMT+0000 INFO  [dispatcher-event-loop-3] CoarseGrainedExecutorBackend - Got assigned task 2
+2021-04-19 17:47:51.817 GMT+0000 INFO  [Executor task launch worker for task 2] Executor - Running task 1.0 in stage 1.0 (TID 2)
+2021-04-19 17:47:51.827 GMT+0000 INFO  [Executor task launch worker for task 2] TorrentBroadcast - Started reading broadcast variable 1
+2021-04-19 17:47:51.836 GMT+0000 INFO  [Executor task launch worker for task 2] MemoryStore - Block broadcast_1_piece0 stored as bytes in memory (estimated size 2.3 KB, free 9.0 GB)
+2021-04-19 17:47:51.840 GMT+0000 INFO  [Executor task launch worker for task 2] TorrentBroadcast - Reading broadcast variable 1 took 13 ms
+2021-04-19 17:47:51.847 GMT+0000 INFO  [Executor task launch worker for task 2] MemoryStore - Block broadcast_1 stored as values in memory (estimated size 3.5 KB, free 9.0 GB)
+2021-04-19 17:47:51.849 GMT+0000 INFO  [Executor task launch worker for task 2] LoggingProperties - Enabled dynamic logging configuration [log4j_k8s.properties]
+2021-04-19 17:47:51.852 GMT+0000 INFO  [Executor task launch worker for task 2] PaxBootstrap - ulimit for process is 1048576
+2021-04-19 17:47:51.858 GMT+0000 INFO  [Executor task launch worker for task 2] Executor - Finished task 1.0 in stage 1.0 (TID 2). 666 bytes result sent to driver

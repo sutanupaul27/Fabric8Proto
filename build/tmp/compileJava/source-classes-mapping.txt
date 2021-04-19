@@ -1,0 +1,10 @@
+com/paxata/engine/K8sClientFactoryImpl.java
+ com.paxata.engine.K8sClientFactoryImpl
+com/paxata/engine/K8sFeatures.java
+ com.paxata.engine.K8sFeatures
+com/paxata/engine/K8sUtils.java
+ com.paxata.engine.K8sUtils
+com/paxata/engine/Supportability.java
+ com.paxata.engine.Supportability
+com/paxata/engine/K8sClientFactory.java
+ com.paxata.engine.K8sClientFactory

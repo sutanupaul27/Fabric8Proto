@@ -1,0 +1,335 @@
+++ id -u
++ myuid=0
+++ id -g
++ mygid=0
++ set +e
+++ getent passwd 0
++ uidentry=root:x:0:0:root:/root:/bin/ash
++ set -e
++ '[' -z root:x:0:0:root:/root:/bin/ash ']'
++ SPARK_K8S_CMD=driver
++ case "$SPARK_K8S_CMD" in
++ shift 1
++ SPARK_CLASSPATH=':/opt/spark/jars/*'
++ env
++ grep SPARK_JAVA_OPT_
++ sort -t_ -k4 -n
++ sed 's/[^=]*=\(.*\)/\1/g'
++ readarray -t SPARK_EXECUTOR_JAVA_OPTS
++ '[' -n '' ']'
++ '[' -n '' ']'
++ PYSPARK_ARGS=
++ '[' -n '' ']'
++ R_ARGS=
++ '[' -n '' ']'
++ '[' '' == 2 ']'
++ '[' '' == 3 ']'
++ case "$SPARK_K8S_CMD" in
++ CMD=("$SPARK_HOME/bin/spark-submit" --conf "spark.driver.bindAddress=$SPARK_DRIVER_BIND_ADDRESS" --deploy-mode client "$@")
++ exec /sbin/tini -s -- /opt/spark/bin/spark-submit --conf spark.driver.bindAddress=10.239.174.97 --deploy-mode client --properties-file /opt/spark/conf/spark.properties --class com.paxata.spark.Main spark-internal
+21/04/19 17:47:27 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+log4j:WARN No appenders could be found for logger (io.netty.util.internal.logging.InternalLoggerFactory).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+21/04/19 17:47:27 INFO CacheMessageServer: Created NettyProtoServer: kind=oio, port=42867
+21/04/19 17:47:27 INFO CacheManagerMasterImpl: Bound socket to port 42867
+21/04/19 17:47:27 INFO EphemeralCacheConstants: CacheConstants: rootDir: /mnt/paxata/ab274de6-0eba-4233-9f00-b61206fef353, totalCacheCapacity: 1000000 (MBs)
+21/04/19 17:47:27 INFO SingletonRegistry: RootDirAll set to = /mnt/paxata/ab274de6-0eba-4233-9f00-b61206fef353
+21/04/19 17:47:28 WARN TierProperties: No tier definition found
+21/04/19 17:47:28 WARN SparkConf: The configuration key 'spark.kryoserializer.buffer.max.mb' has been deprecated as of Spark 1.4 and may be removed in the future. Please use the new key 'spark.kryoserializer.buffer.max' instead.
+21/04/19 17:47:28 WARN SparkConf: The configuration key 'spark.kryoserializer.buffer.max.mb' has been deprecated as of Spark 1.4 and may be removed in the future. Please use the new key 'spark.kryoserializer.buffer.max' instead.
+21/04/19 17:47:28 INFO SparkContext: Running Spark version 2.4.4
+21/04/19 17:47:28 INFO SparkContext: Submitted application: paxi
+21/04/19 17:47:28 INFO SecurityManager: Changing view acls to: root
+21/04/19 17:47:28 INFO SecurityManager: Changing modify acls to: root
+21/04/19 17:47:28 INFO SecurityManager: Changing view acls groups to: 
+21/04/19 17:47:28 INFO SecurityManager: Changing modify acls groups to: 
+21/04/19 17:47:28 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+21/04/19 17:47:28 INFO Utils: Successfully started service 'sparkDriver' on port 7078.
+21/04/19 17:47:28 INFO SparkEnv: Registering MapOutputTracker
+21/04/19 17:47:28 INFO SparkEnv: Registering BlockManagerMaster
+21/04/19 17:47:28 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/04/19 17:47:28 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/04/19 17:47:28 INFO DiskBlockManager: Created local directory at /mnt/paxata/blockmgr-569aae39-0212-4d54-b698-6f229ed09da3
+21/04/19 17:47:28 INFO MemoryStore: MemoryStore started with capacity 4.6 GB
+21/04/19 17:47:28 INFO SparkEnv: Registering OutputCommitCoordinator
+21/04/19 17:47:28 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+21/04/19 17:47:28 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:4040
+21/04/19 17:47:28 INFO SparkContext: Added JAR http://10.239.190.30:8810/pipeline/lib/pipeline.jar at http://10.239.190.30:8810/pipeline/lib/pipeline.jar with timestamp 1618854448819
+21/04/19 17:47:28 INFO SparkContext: Added file http://10.239.190.30:8810/pipeline/properties/clustering-algorithms.properties at http://10.239.190.30:8810/pipeline/properties/clustering-algorithms.properties with timestamp 1618854448820
+21/04/19 17:47:28 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/clustering-algorithms.properties to /mnt/paxata/spark-1932cb97-5a75-4342-a34e-8ce7106db19e/userFiles-7b6b0893-af5a-45a1-814f-b58164ff86f5/fetchFileTemp542637062553823773.tmp
+21/04/19 17:47:28 INFO SparkContext: Added file http://10.239.190.30:8810/pipeline/properties/default-messages.properties at http://10.239.190.30:8810/pipeline/properties/default-messages.properties with timestamp 1618854448827
+21/04/19 17:47:28 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/default-messages.properties to /mnt/paxata/spark-1932cb97-5a75-4342-a34e-8ce7106db19e/userFiles-7b6b0893-af5a-45a1-814f-b58164ff86f5/fetchFileTemp4717685047738383993.tmp
+21/04/19 17:47:28 INFO SparkContext: Added file http://10.239.190.30:8810/pipeline/properties/http.properties at http://10.239.190.30:8810/pipeline/properties/http.properties with timestamp 1618854448830
+21/04/19 17:47:28 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/http.properties to /mnt/paxata/spark-1932cb97-5a75-4342-a34e-8ce7106db19e/userFiles-7b6b0893-af5a-45a1-814f-b58164ff86f5/fetchFileTemp6722961424869128223.tmp
+21/04/19 17:47:28 INFO SparkContext: Added file http://10.239.190.30:8810/pipeline/properties/log4j.properties at http://10.239.190.30:8810/pipeline/properties/log4j.properties with timestamp 1618854448833
+21/04/19 17:47:28 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/log4j.properties to /mnt/paxata/spark-1932cb97-5a75-4342-a34e-8ce7106db19e/userFiles-7b6b0893-af5a-45a1-814f-b58164ff86f5/fetchFileTemp2067321289358969424.tmp
+21/04/19 17:47:28 INFO SparkContext: Added file http://10.239.190.30:8810/pipeline/properties/log4j_k8s.properties at http://10.239.190.30:8810/pipeline/properties/log4j_k8s.properties with timestamp 1618854448836
+21/04/19 17:47:28 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/log4j_k8s.properties to /mnt/paxata/spark-1932cb97-5a75-4342-a34e-8ce7106db19e/userFiles-7b6b0893-af5a-45a1-814f-b58164ff86f5/fetchFileTemp3472763143760042270.tmp
+21/04/19 17:47:28 INFO SparkContext: Added file http://10.239.190.30:8810/pipeline/properties/log4j_yarn.properties at http://10.239.190.30:8810/pipeline/properties/log4j_yarn.properties with timestamp 1618854448839
+21/04/19 17:47:28 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/log4j_yarn.properties to /mnt/paxata/spark-1932cb97-5a75-4342-a34e-8ce7106db19e/userFiles-7b6b0893-af5a-45a1-814f-b58164ff86f5/fetchFileTemp2174297526574471045.tmp
+21/04/19 17:47:28 INFO SparkContext: Added file http://10.239.190.30:8810/pipeline/properties/paxata.properties at http://10.239.190.30:8810/pipeline/properties/paxata.properties with timestamp 1618854448842
+21/04/19 17:47:28 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/paxata.properties to /mnt/paxata/spark-1932cb97-5a75-4342-a34e-8ce7106db19e/userFiles-7b6b0893-af5a-45a1-814f-b58164ff86f5/fetchFileTemp5862997089821108644.tmp
+21/04/19 17:47:28 INFO SparkContext: Added file http://10.239.190.30:8810/pipeline/properties/spark.properties at http://10.239.190.30:8810/pipeline/properties/spark.properties with timestamp 1618854448845
+21/04/19 17:47:28 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/spark.properties to /mnt/paxata/spark-1932cb97-5a75-4342-a34e-8ce7106db19e/userFiles-7b6b0893-af5a-45a1-814f-b58164ff86f5/fetchFileTemp4239337148795762386.tmp
+21/04/19 17:47:28 INFO SparkContext: Added file http://10.239.190.30:8810/pipeline/properties/tiers.properties at http://10.239.190.30:8810/pipeline/properties/tiers.properties with timestamp 1618854448847
+21/04/19 17:47:28 INFO Utils: Fetching http://10.239.190.30:8810/pipeline/properties/tiers.properties to /mnt/paxata/spark-1932cb97-5a75-4342-a34e-8ce7106db19e/userFiles-7b6b0893-af5a-45a1-814f-b58164ff86f5/fetchFileTemp7876195993819447847.tmp
+21/04/19 17:47:29 INFO FairSchedulableBuilder: Creating Fair Scheduler pools from /tmp/1618854448190-0/pool-config.xml
+21/04/19 17:47:29 INFO FairSchedulableBuilder: Created pool: CATCHALL_DEFAULT_BATCH, schedulingMode: FIFO, minShare: 0, weight: 1
+21/04/19 17:47:29 INFO FairSchedulableBuilder: Created pool: CATCHALL_DEFAULT_LIVE, schedulingMode: FAIR, minShare: 0, weight: 1
+21/04/19 17:47:29 INFO FairSchedulableBuilder: Created default pool: default, schedulingMode: FIFO, minShare: 0, weight: 1
+21/04/19 17:47:29 INFO ExecutorPodsAllocator: Going to request 2 executors from Kubernetes.
+21/04/19 17:47:29 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 7079.
+21/04/19 17:47:29 INFO NettyBlockTransferService: Server created on pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7079
+21/04/19 17:47:29 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/04/19 17:47:29 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc, 7079, None)
+21/04/19 17:47:29 INFO BlockManagerMasterEndpoint: Registering block manager pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7079 with 4.6 GB RAM, BlockManagerId(driver, pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc, 7079, None)
+21/04/19 17:47:29 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc, 7079, None)
+21/04/19 17:47:29 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc, 7079, None)
+21/04/19 17:47:33 INFO KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.239.215.218:53024) with ID 2
+21/04/19 17:47:33 INFO KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.239.226.63:35992) with ID 1
+21/04/19 17:47:33 INFO KubernetesClusterSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+2021-04-19 17:47:33.653 GMT+0000 INFO  [main] LoggingProperties - Enabled dynamic logging configuration [log4j_k8s.properties]
+2021-04-19 17:47:33.669 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerMasterEndpoint - Registering block manager 10.239.215.218:35033 with 9.0 GB RAM, BlockManagerId(2, 10.239.215.218, 35033, None)
+2021-04-19 17:47:33.683 GMT+0000 INFO  [dispatcher-event-loop-1] BlockManagerMasterEndpoint - Registering block manager 10.239.226.63:38973 with 9.0 GB RAM, BlockManagerId(1, 10.239.226.63, 38973, None)
+2021-04-19 17:47:33.989 GMT+0000 WARN  [main] Main - Can't find hadoop property file: /etc/pax-secrets/core-site.xml
+2021-04-19 17:47:33.992 GMT+0000 INFO  [main] Main - Pipeline version 2021.1.pr.2021.1_service-pack-development
+2021-04-19 17:47:34.008 GMT+0000 INFO  [ForkJoinPool-1-worker-3] PaxataProperties - PaxataProperties - java property 'px.total.cache.capacity' already set, will not override with value from paxata.properties file
+2021-04-19 17:47:34.028 GMT+0000 INFO  [ForkJoinPool-1-worker-3] PaxBootstrap - ulimit for process is 1048576
+2021-04-19 17:47:34.055 GMT+0000 INFO  [ForkJoinPool-1-worker-3] CacheDataServer - Created NettyProtoServer: kind=oio, port=33475
+2021-04-19 17:47:34.056 GMT+0000 INFO  [ForkJoinPool-1-worker-3] CacheManagerOnNodeImpl - Bound socket to port 33475, executorId=driver
+2021-04-19 17:47:34.078 GMT+0000 INFO  [ForkJoinPool-1-worker-3] log - Logging initialized @8274ms
+2021-04-19 17:47:34.132 GMT+0000 INFO  [ForkJoinPool-1-worker-3] Server - jetty-9.2.z-SNAPSHOT
+2021-04-19 17:47:34.153 GMT+0000 INFO  [ForkJoinPool-1-worker-3] ServerConnector - Started ServerConnector@b788908{HTTP/1.1}{0.0.0.0:57979}
+2021-04-19 17:47:34.154 GMT+0000 INFO  [ForkJoinPool-1-worker-3] Server - Started @8350ms
+2021-04-19 17:47:34.155 GMT+0000 INFO  [ForkJoinPool-1-worker-3] CacheFileServerImpl - CacheFileServer: started cache file server on port 57979
+2021-04-19 17:47:34.155 GMT+0000 INFO  [ForkJoinPool-1-worker-3] Utils - Successfully started service on port 57979.
+2021-04-19 17:47:34.386 GMT+0000 INFO  [ForkJoinPool-1-worker-3] NettySharedConnection - created RemoteClient channel on remote host, ch=[id: 0x530d0a5a, L:/10.239.174.97:42708 - R:/10.239.174.97:42867]
+2021-04-19 17:47:34.407 GMT+0000 WARN  [netty-worker-CacheMessageServer-oio] CacheManagerMasterImpl - Executor driver not found
+2021-04-19 17:47:34.410 GMT+0000 INFO  [netty-worker-CacheMessageServer-oio] CacheManagerMasterImpl - RemoteClient created, executor=driver, host=10.239.174.97, port=33475
+2021-04-19 17:47:34.539 GMT+0000 INFO  [netty-worker-CacheMessageServer-oio] NettySharedConnection - created RemoteClient channel on remote host, ch=[id: 0x455b6e9b, L:/10.239.174.97:53492 - R:/10.239.174.97:33475]
+2021-04-19 17:47:34.574 GMT+0000 INFO  [ForkJoinPool-1-worker-3] RefCountLRU - RefCountLRU constructed with capacity: 1048576000000
+2021-04-19 17:47:34.593 GMT+0000 INFO  [ForkJoinPool-1-worker-3] CacheFileServerImpl - CacheFileServer: cache file server on port 57979 now serving /mnt/paxata/ab274de6-0eba-4233-9f00-b61206fef353/cache-driver
+2021-04-19 17:47:34.598 GMT+0000 INFO  [ForkJoinPool-1-worker-3] CacheManagerOnNodeImpl - created IndexCache for nodeId=executorId: "driver"
+hostname: "10.239.174.97"
+port: 33475
+fileServPort: 57979
+, cacheDir=/mnt/paxata/ab274de6-0eba-4233-9f00-b61206fef353/cache-driver
+2021-04-19 17:47:34.646 GMT+0000 INFO  [main] Server - jetty-9.2.z-SNAPSHOT
+2021-04-19 17:47:34.657 GMT+0000 INFO  [main] ContextHandler - Started c.p.s.o.e.j.s.ServletContextHandler@47768e74{/diagnostic,null,AVAILABLE}
+2021-04-19 17:47:34.658 GMT+0000 INFO  [main] ContextHandler - Started c.p.s.o.e.j.s.ServletContextHandler@72503b19{/status,null,AVAILABLE}
+2021-04-19 17:47:34.658 GMT+0000 INFO  [main] ContextHandler - Started c.p.s.o.e.j.s.ServletContextHandler@2ecf5915{/,null,AVAILABLE}
+2021-04-19 17:47:34.659 GMT+0000 INFO  [main] ServerConnector - Started ServerConnector@53e76c11{HTTP/1.1}{0.0.0.0:8090}
+2021-04-19 17:47:34.659 GMT+0000 INFO  [main] Server - Started @8855ms
+2021-04-19 17:47:34.810 GMT+0000 INFO  [???-???-???-???-???-???] ScriptServlet - 
+2021-04-19 17:47:34.820 GMT+0000 INFO  [qtp1092245861-104] StatusServlet - getOrCreate context servlet_reporting_context
+2021-04-19 17:47:34.825 GMT+0000 INFO  [Thread-51] AsyncContextEventDispatcher$QueueWorker - Starting worker contextId=servlet_reporting_context, contextTimeout=9223372036854775807
+2021-04-19 17:47:46.930 GMT+0000 INFO  [spark-listener-akka.actor.default-dispatcher-3] ExecutorActor - Adding executor 2
+2021-04-19 17:47:47.931 GMT+0000 INFO  [spark-listener-akka.actor.default-dispatcher-3] ExecutorActor - Bootstrapping executors: Set(2)
+2021-04-19 17:47:48.027 GMT+0000 INFO  [spark-listener-akka.actor.default-dispatcher-3] SparkContext - Starting job: apply at PXMetricAware.scala:42
+2021-04-19 17:47:48.048 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Got job 0 (apply at PXMetricAware.scala:42) with 1 output partitions
+2021-04-19 17:47:48.048 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Final stage: ResultStage 0 (apply at PXMetricAware.scala:42)
+2021-04-19 17:47:48.049 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Parents of final stage: List()
+2021-04-19 17:47:48.050 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Missing parents: List()
+2021-04-19 17:47:48.057 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Submitting ResultStage 0 (MapPartitionsRDD[1] at apply at PXMetricAware.scala:42), which has no missing parents
+2021-04-19 17:47:48.195 GMT+0000 INFO  [dag-scheduler-event-loop] MemoryStore - Block broadcast_0 stored as values in memory (estimated size 3.5 KB, free 4.6 GB)
+2021-04-19 17:47:48.601 GMT+0000 INFO  [dag-scheduler-event-loop] MemoryStore - Block broadcast_0_piece0 stored as bytes in memory (estimated size 2.3 KB, free 4.6 GB)
+2021-04-19 17:47:48.603 GMT+0000 INFO  [dispatcher-event-loop-1] BlockManagerInfo - Added broadcast_0_piece0 in memory on pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7079 (size: 2.3 KB, free: 4.6 GB)
+2021-04-19 17:47:48.606 GMT+0000 INFO  [dag-scheduler-event-loop] SparkContext - Created broadcast 0 from broadcast at DAGScheduler.scala:1161
+2021-04-19 17:47:48.622 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at apply at PXMetricAware.scala:42) (first 15 tasks are for partitions Vector(0))
+2021-04-19 17:47:48.623 GMT+0000 INFO  [dag-scheduler-event-loop] TaskSchedulerImpl - Adding task set 0.0 with 1 tasks
+2021-04-19 17:47:48.641 GMT+0000 INFO  [dag-scheduler-event-loop] FairSchedulableBuilder - Added task set TaskSet_0.0 tasks to pool default
+2021-04-19 17:47:48.669 GMT+0000 INFO  [dispatcher-event-loop-0] TaskSetManager - Starting task 0.0 in stage 0.0 (TID 0, 10.239.226.63, executor 1, partition 0, PROCESS_LOCAL, 7741 bytes)
+2021-04-19 17:47:49.752 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerInfo - Added broadcast_0_piece0 in memory on 10.239.226.63:38973 (size: 2.3 KB, free: 9.0 GB)
+2021-04-19 17:47:50.341 GMT+0000 WARN  [netty-worker-CacheMessageServer-oio] CacheManagerMasterImpl - Executor 1 not found
+2021-04-19 17:47:50.344 GMT+0000 INFO  [netty-worker-CacheMessageServer-oio] CacheManagerMasterImpl - RemoteClient created, executor=1, host=10.239.226.63, port=43061
+2021-04-19 17:47:50.347 GMT+0000 INFO  [netty-worker-CacheMessageServer-oio] NettySharedConnection - created RemoteClient channel on remote host, ch=[id: 0x7d103bc4, L:/10.239.174.97:44698 - R:/10.239.226.63:43061]
+2021-04-19 17:47:50.455 GMT+0000 INFO  [task-result-getter-0] TaskSetManager - Finished task 0.0 in stage 0.0 (TID 0) in 1808 ms on 10.239.226.63 (executor 1) (1/1)
+2021-04-19 17:47:50.459 GMT+0000 INFO  [task-result-getter-0] TaskSchedulerImpl - Removed TaskSet 0.0, whose tasks have all completed, from pool default
+2021-04-19 17:47:50.465 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - ResultStage 0 (apply at PXMetricAware.scala:42) finished in 2.388 s
+2021-04-19 17:47:50.472 GMT+0000 INFO  [spark-listener-akka.actor.default-dispatcher-3] DAGScheduler - Job 0 finished: apply at PXMetricAware.scala:42, took 2.444899 s
+2021-04-19 17:47:50.760 GMT+0000 INFO  [spark-listener-akka.actor.default-dispatcher-3] ExecutorActor - Adding executor 1
+2021-04-19 17:47:51.761 GMT+0000 INFO  [spark-listener-akka.actor.default-dispatcher-3] ExecutorActor - Bootstrapping executors: Set(1, 2)
+2021-04-19 17:47:51.767 GMT+0000 INFO  [spark-listener-akka.actor.default-dispatcher-3] SparkContext - Starting job: apply at PXMetricAware.scala:42
+2021-04-19 17:47:51.768 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Got job 1 (apply at PXMetricAware.scala:42) with 2 output partitions
+2021-04-19 17:47:51.768 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Final stage: ResultStage 1 (apply at PXMetricAware.scala:42)
+2021-04-19 17:47:51.769 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Parents of final stage: List()
+2021-04-19 17:47:51.769 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Missing parents: List()
+2021-04-19 17:47:51.769 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Submitting ResultStage 1 (MapPartitionsRDD[3] at apply at PXMetricAware.scala:42), which has no missing parents
+2021-04-19 17:47:51.772 GMT+0000 INFO  [dag-scheduler-event-loop] MemoryStore - Block broadcast_1 stored as values in memory (estimated size 3.5 KB, free 4.6 GB)
+2021-04-19 17:47:51.798 GMT+0000 INFO  [dag-scheduler-event-loop] MemoryStore - Block broadcast_1_piece0 stored as bytes in memory (estimated size 2.3 KB, free 4.6 GB)
+2021-04-19 17:47:51.799 GMT+0000 INFO  [dispatcher-event-loop-1] BlockManagerInfo - Added broadcast_1_piece0 in memory on pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7079 (size: 2.3 KB, free: 4.6 GB)
+2021-04-19 17:47:51.799 GMT+0000 INFO  [dag-scheduler-event-loop] SparkContext - Created broadcast 1 from broadcast at DAGScheduler.scala:1161
+2021-04-19 17:47:51.800 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - Submitting 2 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at apply at PXMetricAware.scala:42) (first 15 tasks are for partitions Vector(0, 1))
+2021-04-19 17:47:51.800 GMT+0000 INFO  [dag-scheduler-event-loop] TaskSchedulerImpl - Adding task set 1.0 with 2 tasks
+2021-04-19 17:47:51.801 GMT+0000 INFO  [dag-scheduler-event-loop] FairSchedulableBuilder - Added task set TaskSet_1.0 tasks to pool default
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 12
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 1
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 4
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 15
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 3
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 18
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 2
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 11
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 21
+2021-04-19 17:47:51.802 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 24
+2021-04-19 17:47:51.803 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 5
+2021-04-19 17:47:51.803 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 9
+2021-04-19 17:47:51.803 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 14
+2021-04-19 17:47:51.803 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 0
+2021-04-19 17:47:51.803 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 17
+2021-04-19 17:47:51.803 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 19
+2021-04-19 17:47:51.803 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 23
+2021-04-19 17:47:51.803 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 22
+2021-04-19 17:47:51.803 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 10
+2021-04-19 17:47:51.807 GMT+0000 INFO  [dispatcher-event-loop-0] TaskSetManager - Starting task 0.0 in stage 1.0 (TID 1, 10.239.215.218, executor 2, partition 0, PROCESS_LOCAL, 7740 bytes)
+2021-04-19 17:47:51.813 GMT+0000 INFO  [dispatcher-event-loop-0] TaskSetManager - Starting task 1.0 in stage 1.0 (TID 2, 10.239.226.63, executor 1, partition 1, PROCESS_LOCAL, 7741 bytes)
+2021-04-19 17:47:51.822 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerInfo - Removed broadcast_0_piece0 on pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7079 in memory (size: 2.3 KB, free: 4.6 GB)
+2021-04-19 17:47:51.832 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerInfo - Removed broadcast_0_piece0 on 10.239.226.63:38973 in memory (size: 2.3 KB, free: 9.0 GB)
+2021-04-19 17:47:51.838 GMT+0000 INFO  [dispatcher-event-loop-1] BlockManagerInfo - Added broadcast_1_piece0 in memory on 10.239.226.63:38973 (size: 2.3 KB, free: 9.0 GB)
+2021-04-19 17:47:51.840 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 16
+2021-04-19 17:47:51.840 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 6
+2021-04-19 17:47:51.840 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 20
+2021-04-19 17:47:51.840 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 8
+2021-04-19 17:47:51.840 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 13
+2021-04-19 17:47:51.840 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 7
+2021-04-19 17:47:51.878 GMT+0000 INFO  [task-result-getter-1] TaskSetManager - Finished task 1.0 in stage 1.0 (TID 2) in 71 ms on 10.239.226.63 (executor 1) (1/2)
+2021-04-19 17:47:52.850 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerInfo - Added broadcast_1_piece0 in memory on 10.239.215.218:35033 (size: 2.3 KB, free: 9.0 GB)
+2021-04-19 17:47:53.439 GMT+0000 WARN  [netty-worker-CacheMessageServer-oio] CacheManagerMasterImpl - Executor 2 not found
+2021-04-19 17:47:53.440 GMT+0000 INFO  [netty-worker-CacheMessageServer-oio] CacheManagerMasterImpl - RemoteClient created, executor=2, host=10.239.215.218, port=36909
+2021-04-19 17:47:53.442 GMT+0000 INFO  [netty-worker-CacheMessageServer-oio] NettySharedConnection - created RemoteClient channel on remote host, ch=[id: 0xc42938e6, L:/10.239.174.97:55214 - R:/10.239.215.218:36909]
+2021-04-19 17:47:53.544 GMT+0000 INFO  [task-result-getter-2] TaskSetManager - Finished task 0.0 in stage 1.0 (TID 1) in 1743 ms on 10.239.215.218 (executor 2) (2/2)
+2021-04-19 17:47:53.544 GMT+0000 INFO  [task-result-getter-2] TaskSchedulerImpl - Removed TaskSet 1.0, whose tasks have all completed, from pool default
+2021-04-19 17:47:53.545 GMT+0000 INFO  [dag-scheduler-event-loop] DAGScheduler - ResultStage 1 (apply at PXMetricAware.scala:42) finished in 1.774 s
+2021-04-19 17:47:53.545 GMT+0000 INFO  [spark-listener-akka.actor.default-dispatcher-3] DAGScheduler - Job 1 finished: apply at PXMetricAware.scala:42, took 1.777292 s
+2021-04-19 17:48:34.905 GMT+0000 INFO  [???-???-???-???-???-???] ScriptServlet - 
+2021-04-19 17:49:34.901 GMT+0000 INFO  [???-???-???-???-???-???] ScriptServlet - 
+2021-04-19 17:50:34.901 GMT+0000 INFO  [???-???-???-???-???-???] ScriptServlet - 
+2021-04-19 17:51:34.901 GMT+0000 INFO  [???-???-???-???-???-???] ScriptServlet - 
+2021-04-19 17:52:34.900 GMT+0000 INFO  [???-???-???-???-???-???] ScriptServlet - 
+2021-04-19 17:52:40.344 GMT+0000 INFO  [script-request-akka.actor.default-dispatcher-4] SparkJobProgressListener - jobGroup started. jobGroupId=04a4dab2-04f5-4494-b2ef-1a4573cff868, requestId=d312e877d94e4001a6d7f15a4671328d
+2021-04-19 17:52:40.345 GMT+0000 INFO  [script-request-akka.actor.default-dispatcher-4] SparkJobProgressListener - startGroup: getOrCreate context 04a4dab2-04f5-4494-b2ef-1a4573cff868
+2021-04-19 17:52:40.351 GMT+0000 INFO  [Thread-52] AsyncContextEventDispatcher$QueueWorker - Starting worker contextId=04a4dab2-04f5-4494-b2ef-1a4573cff868, contextTimeout=7200000
+2021-04-19 17:52:40.367 GMT+0000 INFO  [script-request-akka.actor.default-dispatcher-4] ScriptRequestActor - New request on jobGroup 04a4dab2-04f5-4494-b2ef-1a4573cff868, fingerprints requestType=LIVE,projectId=80d9569fa34c4f7d961e535faa0ae355,requestDescription=dataManagerService.getData,sessionId=b231e3fc88a64cfea1ac45315c99f2d0,messageId=14-d312e877d94e4001a6d7f15a4671328d,requestId=d312e877d94e4001a6d7f15a4671328d,userId=31a89058f29448c59f76c02d1851d12f,tenantId=43be7017c2134c07a2db1a95529dcaed,userName=superuser,tenantName=administration, script: authtoken = "eSbxW23+ffpcGnZT8Ag6+pM1OR/ilTj4vbZia8K6394=" live  language = English
+# target
+pipeline ds_80d9569fa34c4f7d961e535faa0ae355 = {
+driving table ds_80d9569fa34c4f7d961e535faa0ae355_0 with columns ["LoanStatNew" -> "LoanStatNew","Description" -> "Description"]
+
+}
+
+# target_0
+pipeline ds_80d9569fa34c4f7d961e535faa0ae355_0 = {
+import {
+  "data" : {
+    "connectionOptions" : { },
+    "path" : "file:///usr/local/paxata/server/tmp/lib-tmp/library/43be7017c2134c07a2db1a95529dcaed/31a89058f29448c59f76c02d1851d12f/af4dddba8fbf42289bde51828bcffaec/320a05b3f0d94eb9ae8eb2f3093be750/data",
+    "fileType" : "PaxataParquet",
+    "importOptions" : { },
+    "fileNames" : [ {
+      "pattern" : "part-000000.parquet",
+      "range" : ""
+    } ]
+  },
+  "version" : 1,
+  "id" : "af4dddba8fbf42289bde51828bcffaec",
+  "metadata" : "http://pax-installation-paxserver-internal.sutanu-supportability:9080/library/getMetadata?id=af4dddba8fbf42289bde51828bcffaec&version=1&uniqueId=bd5cf07597184e048e7d4072c36706bf&mdVer=2&dataVer=117",
+  "rowLimit" : 117
+} with columns ["LoanStatNew","Description"]
+
+
+}
+
+view ["$$_Sources","LoanStatNew","Description"] from ds_80d9569fa34c4f7d961e535faa0ae355 rows 0 to 378
+
+[INFO] [04/19/2021 17:52:40.370] [script-request-akka.actor.default-dispatcher-5] [akka://script-request/deadLetters] Message [akka.actor.LocalActorRef] from Actor[akka://script-request/user/$a#1886014450] to Actor[akka://script-request/deadLetters] was not delivered. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2021-04-19 17:52:40.751 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 41
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 31
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 25
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 29
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 32
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 45
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 46
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 26
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 37
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 34
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 27
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 38
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 39
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 43
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 36
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 40
+2021-04-19 17:52:40.752 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 44
+2021-04-19 17:52:40.753 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 47
+2021-04-19 17:52:40.753 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 35
+2021-04-19 17:52:40.753 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 28
+2021-04-19 17:52:40.753 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 33
+2021-04-19 17:52:40.754 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerInfo - Removed broadcast_1_piece0 on pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7079 in memory (size: 2.3 KB, free: 4.6 GB)
+2021-04-19 17:52:40.757 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerInfo - Removed broadcast_1_piece0 on 10.239.226.63:38973 in memory (size: 2.3 KB, free: 9.0 GB)
+2021-04-19 17:52:40.761 GMT+0000 INFO  [pool-26-thread-1] HttpDataFetcher - Fetching data using url http://pax-installation-paxserver-internal.sutanu-supportability:9080/library/getMetadata?id=af4dddba8fbf42289bde51828bcffaec&version=1&uniqueId=bd5cf07597184e048e7d4072c36706bf&mdVer=2&dataVer=117
+2021-04-19 17:52:40.762 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerInfo - Removed broadcast_1_piece0 on 10.239.215.218:35033 in memory (size: 2.3 KB, free: 9.0 GB)
+2021-04-19 17:52:40.765 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 48
+2021-04-19 17:52:40.765 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 49
+2021-04-19 17:52:40.765 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 30
+2021-04-19 17:52:40.766 GMT+0000 INFO  [Spark Context Cleaner] ContextCleaner - Cleaned accumulator 42
+2021-04-19 17:52:41.089 GMT+0000 INFO  [pool-26-thread-1] MemoryStore - Block broadcast_2 stored as values in memory (estimated size 40.0 B, free 4.6 GB)
+2021-04-19 17:52:41.115 GMT+0000 INFO  [pool-26-thread-1] MemoryStore - Block broadcast_2_piece0 stored as bytes in memory (estimated size 44.0 B, free 4.6 GB)
+2021-04-19 17:52:41.116 GMT+0000 INFO  [dispatcher-event-loop-1] BlockManagerInfo - Added broadcast_2_piece0 in memory on pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7079 (size: 44.0 B, free: 4.6 GB)
+2021-04-19 17:52:41.117 GMT+0000 INFO  [pool-26-thread-1] SparkContext - Created broadcast 2 from broadcast at ImportExecNode.scala:89
+2021-04-19 17:52:41.128 GMT+0000 WARN  [pool-26-thread-1] SparkConf - The configuration key 'spark.kryoserializer.buffer.max.mb' has been deprecated as of Spark 1.4 and may be removed in the future. Please use the new key 'spark.kryoserializer.buffer.max' instead.
+2021-04-19 17:52:41.158 GMT+0000 INFO  [pool-26-thread-1] SharedState - Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/opt/spark/work-dir/spark-warehouse').
+2021-04-19 17:52:41.158 GMT+0000 INFO  [pool-26-thread-1] SharedState - Warehouse path is 'file:/opt/spark/work-dir/spark-warehouse'.
+2021-04-19 17:52:41.671 GMT+0000 INFO  [pool-26-thread-1] StateStoreCoordinatorRef - Registered StateStoreCoordinator endpoint
+2021-04-19 17:52:41.678 GMT+0000 WARN  [pool-26-thread-1] SparkSession$Builder - Using an existing SparkSession; some configuration may not take effect.
+2021-04-19 17:52:41.944 GMT+0000 INFO  [pool-26-thread-1] JobGroupManager - releasing resources for jobs group 04a4dab2-04f5-4494-b2ef-1a4573cff868 as part of 1 others on clients Vector() blocking is true
+2021-04-19 17:52:41.953 GMT+0000 INFO  [pool-26-thread-1] MemoryStore - Block broadcast_3 stored as values in memory (estimated size 40.0 B, free 4.6 GB)
+2021-04-19 17:52:41.978 GMT+0000 INFO  [pool-26-thread-1] MemoryStore - Block broadcast_3_piece0 stored as bytes in memory (estimated size 44.0 B, free 4.6 GB)
+2021-04-19 17:52:41.979 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerInfo - Added broadcast_3_piece0 in memory on pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7079 (size: 44.0 B, free: 4.6 GB)
+2021-04-19 17:52:41.979 GMT+0000 INFO  [dispatcher-event-loop-0] BlockManagerInfo - Removed broadcast_2_piece0 on pax-installation-pipeline-1618854442749-driver-svc.sutanu-supportability.svc:7079 in memory (size: 44.0 B, free: 4.6 GB)
+2021-04-19 17:52:41.979 GMT+0000 INFO  [pool-26-thread-1] SparkContext - Created broadcast 3 from broadcast at ImportExecNode.scala:89
+2021-04-19 17:52:41.982 GMT+0000 WARN  [pool-26-thread-1] SparkConf - The configuration key 'spark.kryoserializer.buffer.max.mb' has been deprecated as of Spark 1.4 and may be removed in the future. Please use the new key 'spark.kryoserializer.buffer.max' instead.
+2021-04-19 17:52:41.983 GMT+0000 WARN  [pool-26-thread-1] SparkSession$Builder - Using an existing SparkSession; some configuration may not take effect.
+2021-04-19 17:52:41.987 GMT+0000 INFO  [pool-26-thread-1] JobGroupManager - releasing resources for jobs group 04a4dab2-04f5-4494-b2ef-1a4573cff868 as part of 1 others on clients Vector() blocking is true
+2021-04-19 17:52:41.988 GMT+0000 ERROR [pool-26-thread-1] ScriptParser - Failure in execute
+org.apache.spark.sql.AnalysisException: Path does not exist: file:/usr/local/paxata/server/tmp/lib-tmp/library/43be7017c2134c07a2db1a95529dcaed/31a89058f29448c59f76c02d1851d12f/af4dddba8fbf42289bde51828bcffaec/320a05b3f0d94eb9ae8eb2f3093be750/data/part-000000.parquet;
+	at org.apache.spark.sql.execution.datasources.DataSource$$anonfun$org$apache$spark$sql$execution$datasources$DataSource$$checkAndGlobPathIfNecessary$1.apply(DataSource.scala:558)
+	at org.apache.spark.sql.execution.datasources.DataSource$$anonfun$org$apache$spark$sql$execution$datasources$DataSource$$checkAndGlobPathIfNecessary$1.apply(DataSource.scala:545)
+	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+	at scala.collection.immutable.List.foreach(List.scala:392)
+	at scala.collection.TraversableLike$class.flatMap(TraversableLike.scala:241)
+	at scala.collection.immutable.List.flatMap(List.scala:355)
+	at org.apache.spark.sql.execution.datasources.DataSource.org$apache$spark$sql$execution$datasources$DataSource$$checkAndGlobPathIfNecessary(DataSource.scala:545)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:359)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:223)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.parquet(DataFrameReader.scala:644)
+	at com.paxata.spark.objectCode.ImportExecNode.com$paxata$spark$objectCode$ImportExecNode$$readParquet$1(ImportExecNode.scala:151)
+	at com.paxata.spark.objectCode.ImportExecNode$$anonfun$9.apply(ImportExecNode.scala:154)
+	at com.paxata.spark.objectCode.ImportExecNode$$anonfun$9.apply(ImportExecNode.scala:154)
+	at scala.collection.parallel.mutable.ParArray$Map.leaf(ParArray.scala:657)
+	at scala.collection.parallel.Task$$anonfun$tryLeaf$1.apply$mcV$sp(Tasks.scala:49)
+	at scala.collection.parallel.Task$$anonfun$tryLeaf$1.apply(Tasks.scala:48)
+	at scala.collection.parallel.Task$$anonfun$tryLeaf$1.apply(Tasks.scala:48)
+	at scala.collection.parallel.Task$class.tryLeaf(Tasks.scala:51)
+	at scala.collection.parallel.mutable.ParArray$Map.tryLeaf(ParArray.scala:648)
+	at scala.collection.parallel.AdaptiveWorkStealingTasks$WrappedTask$class.compute(Tasks.scala:152)
+	at scala.collection.parallel.AdaptiveWorkStealingForkJoinTasks$WrappedTask.compute(Tasks.scala:443)
+	at scala.concurrent.forkjoin.RecursiveAction.exec(RecursiveAction.java:160)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+2021-04-19 17:52:41.996 GMT+0000 INFO  [directImport-04a4dab2-04f5-4494-b2ef-1a4573cff868] ProgressServer - Exit signal received, exiting
+2021-04-19 17:52:41.996 GMT+0000 INFO  [directImport-04a4dab2-04f5-4494-b2ef-1a4573cff868] ProgressServer - Exit signal received, exiting
+2021-04-19 17:52:42.001 GMT+0000 INFO  [pool-26-thread-1] JobGroupManager - releasing resources for jobs group 04a4dab2-04f5-4494-b2ef-1a4573cff868 as part of 1 others on clients Vector() blocking is false
+2021-04-19 17:52:42.003 GMT+0000 INFO  [script-request-akka.actor.default-dispatcher-4] ScriptRequestActor - Finished jobGroup 04a4dab2-04f5-4494-b2ef-1a4573cff868 with result Left(ScriptExecutionErrors(Pipeline_Gene
+2021-04-19 17:52:42.007 GMT+0000 INFO  [Thread-52] SplunkLoggerListener - state=completed,requestType=LIVE,projectId=80d9569fa34c4f7d961e535faa0ae355,requestDescription=dataManagerService.getData,coreMsUsed=-1,userId=31a89058f29448c59f76c02d1851d12f,tenantId=43be7017c2134c07a2db1a95529dcaed,jobGroup=04a4dab2-04f5-4494-b2ef-1a4573cff868
+2021-04-19 17:52:42.007 GMT+0000 INFO  [script-request-akka.actor.default-dispatcher-4] ScriptRequestActor - Marking requester requestType=LIVE,projectId=80d9569fa34c4f7d961e535faa0ae355,requestDescription=dataManagerService.getData,sessionId=b231e3fc88a64cfea1ac45315c99f2d0,messageId=14-d312e877d94e4001a6d7f15a4671328d,requestId=d312e877d94e4001a6d7f15a4671328d,userId=31a89058f29448c59f76c02d1851d12f,tenantId=43be7017c2134c07a2db1a95529dcaed,userName=superuser,tenantName=administration with Left(ScriptExecutionErrors(Pipeline_Gene
+2021-04-19 17:52:42.007 GMT+0000 INFO  [superuser-b231e3fc88a64cfea1ac45315c99f2d0-14-d312e877d94e4001a6d7f15a4671328d-dataManagerService.getData-LIVE-d312e877d94e4001a6d7f15a4671328d] ScriptRunner - End executing script in 1675 millisecs. fingerprints: FingerprintObject(requestId,d312e877d94e4001a6d7f15a4671328d), FingerprintObject(messageId,14-d312e877d94e4001a6d7f15a4671328d), FingerprintObject(tenantId,43be7017c2134c07a2db1a95529dcaed), FingerprintObject(requestDescription,dataManagerService.getData), FingerprintObject(projectId,80d9569fa34c4f7d961e535faa0ae355), FingerprintObject(requestType,LIVE), FingerprintObject(tenantName,administration), FingerprintObject(sessionId,b231e3fc88a64cfea1ac45315c99f2d0), FingerprintObject(userName,superuser), FingerprintObject(userId,31a89058f29448c59f76c02d1851d12f)
+2021-04-19 17:52:42.013 GMT+0000 INFO  [script-request-akka.actor.default-dispatcher-4] AsyncContextEventDispatcher - Posting terminating event via main queue contextId=Some(04a4dab2-04f5-4494-b2ef-1a4573cff868)
+2021-04-19 17:52:42.021 GMT+0000 INFO  [Thread-52] RequestInfoListener - jobGroup ended. jobGroupId=04a4dab2-04f5-4494-b2ef-1a4573cff868, requestIds=List(d312e877d94e4001a6d7f15a4671328d)
+2021-04-19 17:52:42.032 GMT+0000 INFO  [superuser-b231e3fc88a64cfea1ac45315c99f2d0-14-d312e877d94e4001a6d7f15a4671328d-dataManagerService.getData-LIVE-d312e877d94e4001a6d7f15a4671328d] ScriptServlet - requestType=LIVE,projectId=80d9569fa34c4f7d961e535faa0ae355,requestDescription=dataManagerService.getData,userId=31a89058f29448c59f76c02d1851d12f,tenantId=43be7017c2134c07a2db1a95529dcaed
+2021-04-19 17:52:42.043 GMT+0000 INFO  [Thread-52] AsyncContextEventDispatcher$QueueWorker - Terminating worker contextId=04a4dab2-04f5-4494-b2ef-1a4573cff868
+2021-04-19 17:52:42.103 GMT+0000 INFO  [pool-3-thread-1] StatMessageHandler - {"name":"requestComplete","startTime":1618854762015,"endTime":1618854762019,"coreMsUsed":-1,"sysCoreCapacity":0,"maxCoresRequested":0,"maxRowsProcessed":0,"jobGroupId":"04a4dab2-04f5-4494-b2ef-1a4573cff868","stepStat.totalForImportSteps.rows":117,"stepStat.totalForImportSteps.cols":2,"stepStat.totalForImportSteps.byteSize":3736,"numberOfRequests":1,"requestInfo.projectName":"projectNameUnknown","requestInfo.requestType":"LIVE","requestInfo.projectId":"80d9569fa34c4f7d961e535faa0ae355","requestInfo.requestDescription":"dataManagerService.getData","requestInfo.sessionId":"b231e3fc88a64cfea1ac45315c99f2d0","requestInfo.requestId":"d312e877d94e4001a6d7f15a4671328d","requestInfo.userId":"31a89058f29448c59f76c02d1851d12f","requestInfo.tenantId":"43be7017c2134c07a2db1a95529dcaed","requestInfo.userName":"superuser","requestInfo.tenantName":"administration"}
+2021-04-19 17:52:42.103 GMT+0000 INFO  [pool-3-thread-1] StatMessageHandler - {"name":"requestComplete","startTime":1618854762015,"endTime":1618854762019,"coreMsUsed":-1,"sysCoreCapacity":0,"maxCoresRequested":0,"maxRowsProcessed":0,"jobGroupId":"04a4dab2-04f5-4494-b2ef-1a4573cff868","stepStat.totalForImportSteps.rows":117,"stepStat.totalForImportSteps.cols":2,"stepStat.totalForImportSteps.byteSize":3736,"numberOfRequests":1,"requestInfo.projectName":"projectNameUnknown","requestInfo.requestType":"LIVE","requestInfo.projectId":"80d9569fa34c4f7d961e535faa0ae355","requestInfo.requestDescription":"dataManagerService.getData","requestInfo.sessionId":"b231e3fc88a64cfea1ac45315c99f2d0","requestInfo.requestId":"d312e877d94e4001a6d7f15a4671328d","requestInfo.userId":"31a89058f29448c59f76c02d1851d12f","requestInfo.tenantId":"43be7017c2134c07a2db1a95529dcaed","requestInfo.userName":"superuser","requestInfo.tenantName":"administration"}
