@@ -15,6 +15,7 @@ dependencies {
     implementation group: 'io.fabric8', name: 'kubernetes-client', version: '4.10.3'
     compile 'commons-codec:commons-codec:1.15'
     implementation group: 'commons-io', name: 'commons-io', version: '2.4'
+    compile 'org.slf4j:slf4j-api:1.7.5'
 }
 
 test {
